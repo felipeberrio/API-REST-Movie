@@ -1,0 +1,19 @@
+{
+  "name": "api-rest-movie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipeberrio/API-REST-Movie.git"
+  },
+  "author": "felipeberrio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/felipeberrio/API-REST-Movie/issues"
+  },
+  "homepage": "https://github.com/felipeberrio/API-REST-Movie#readme"
+}
