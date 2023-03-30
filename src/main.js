@@ -1,18 +1,32 @@
-const API_LINK = "https://api.themoviedb.org/3";
+const API_LINK = "https://api.themoviedb.org/3/";
+// const API_LANGUAGE = '&language=es'
+const API_LANGUAGE = 'es'
+
+const api = axios.create({
+  baseURL: API_LINK,
+  headers:{
+    'Content-Type': 'application/json;charset=utf-8'
+  },
+  params: {
+    'api_key': API_KEY,
+    'language': API_LANGUAGE,
+  }
+})
 
 const app = () => {
   getTrendingMoviesPreview();
+  getCategoriesPreview();
 };
 
 async function getTrendingMoviesPreview() {
-  const res = await fetch(API_LINK + "/trending/movie/day?api_key=" + API_KEY);
-  const data = await res.json();
-
+  const {data} = await api("trending/movie/day");
   const movies = data.results;
   console.log({ data, movies });
 
   movies.forEach((movie) => {
-    const trendingPreviewMoviesContainer = document.querySelector('#trendingPreview .trendingPreview-movieList')
+    const trendingPreviewMoviesContainer = document.querySelector(
+      "#trendingPreview .trendingPreview-movieList"
+    );
 
     const movieContainer = document.createElement("div");
     movieContainer.classList.add("movie-container");
@@ -23,12 +37,31 @@ async function getTrendingMoviesPreview() {
       "src",
       "https://image.tmdb.org/t/p/w300/" + movie.poster_path
     );
-    movieContainer.appendChild(movieImg)
-    trendingPreviewMoviesContainer.appendChild(movieContainer)
-
+    movieContainer.appendChild(movieImg);
+    trendingPreviewMoviesContainer.appendChild(movieContainer);
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  app();
-});
+async function getCategoriesPreview() {
+  const {data} = await api("/genre/movie/list");
+  const categories = data.genres;
+  console.log({ data, categories });
+
+  categories.forEach((category) => {
+    const previewCategoriesContainer = document.querySelector(
+      "#categoriesPreview .categoriesPreview-list"
+    );
+
+    const categoryContainer = document.createElement("div");
+    categoryContainer.classList.add("category-container");
+    const categoryTitle = document.createElement("h3");
+    categoryTitle.classList.add("category-title");
+    categoryTitle.setAttribute('id','id'+ category.id);
+    const categoryTitleText = document.createTextNode(category.name);
+
+    categoryTitle.appendChild(categoryTitleText);
+    categoryContainer.appendChild(categoryTitle);
+    previewCategoriesContainer.appendChild(categoryContainer);
+  });
+}
+
