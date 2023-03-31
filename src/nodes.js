@@ -1,27 +1,30 @@
+const $query = (id) => document.querySelector(id);
+
+
 // Sections
 const headerSection = document.querySelector('#header');
-const trendingPreviewSection = document.querySelector('#trendingPreview');
-const categoriesPreviewSection = document.querySelector('#categoriesPreview');
-const genericSection = document.querySelector('#genericList');
-const movieDetailSection = document.querySelector('#movieDetail');
+const trendingPreviewSection = $query('#trendingPreview');
+const categoriesPreviewSection = $query('#categoriesPreview');
+const genericSection = $query('#genericList');
+const movieDetailSection = $query('#movieDetail');
 
 // Lists & Containers
-const searchForm = document.querySelector('#searchForm');
-const trendingMoviesPreviewList = document.querySelector('.trendingPreview-movieList');
-const categoriesPreviewList = document.querySelector('.categoriesPreview-list');
-const movieDetailCategoriesList = document.querySelector('#movieDetail .categories-list');
-const relatedMoviesContainer = document.querySelector('.relatedMovies-scrollContainer');
+const searchForm = $query('#searchForm');
+const trendingMoviesPreviewList = $query('.trendingPreview-movieList');
+const categoriesPreviewList = $query('.categoriesPreview-list');
+const movieDetailCategoriesList = $query('#movieDetail .categories-list');
+const relatedMoviesContainer = $query('.relatedMovies-scrollContainer');
 
 // Elements
-const headerTitle = document.querySelector('.header-title');
-const arrowBtn = document.querySelector('.header-arrow');
-const headerCategoryTitle = document.querySelector('.header-title--categoryView');
+const headerTitle = $query('.header-title');
+const arrowBtn = $query('.header-arrow');
+const headerCategoryTitle = $query('.header-title--categoryView');
 
-const searchFormInput = document.querySelector('#searchForm input');
-const searchFormBtn = document.querySelector('#searchBtn');
+const searchFormInput = $query('#searchForm input');
+const searchFormBtn = $query('#searchBtn');
 
-const trendingBtn = document.querySelector('.trendingPreview-btn');
+const trendingBtn = $query('.trendingPreview-btn');
 
-const movieDetailTitle = document.querySelector('.movieDetail-title');
-const movieDetailDescription = document.querySelector('.movieDetail-description');
-const movieDetailScore = document.querySelector('.movieDetail-score');
+const movieDetailTitle = $query('.movieDetail-title');
+const movieDetailDescription = $query('.movieDetail-description');
+const movieDetailScore = $query('.movieDetail-score');
