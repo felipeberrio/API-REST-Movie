@@ -1,3 +1,4 @@
+const $ = (id) => document.querySelector(id);
 const API_LINK = "https://api.themoviedb.org/3/";
 // const API_LANGUAGE = '&language=es'
 const API_LANGUAGE = 'es'
@@ -24,7 +25,7 @@ async function getTrendingMoviesPreview() {
   console.log({ data, movies });
 
   movies.forEach((movie) => {
-    const trendingPreviewMoviesContainer = document.querySelector(
+    const trendingMoviesPreviewList = document.querySelector(
       "#trendingPreview .trendingPreview-movieList"
     );
 
@@ -38,7 +39,7 @@ async function getTrendingMoviesPreview() {
       "https://image.tmdb.org/t/p/w300/" + movie.poster_path
     );
     movieContainer.appendChild(movieImg);
-    trendingPreviewMoviesContainer.appendChild(movieContainer);
+    trendingMoviesPreviewList.appendChild(movieContainer);
   });
 }
 
@@ -48,7 +49,7 @@ async function getCategoriesPreview() {
   console.log({ data, categories });
 
   categories.forEach((category) => {
-    const previewCategoriesContainer = document.querySelector(
+    const categoriesPreviewList = document.querySelector(
       "#categoriesPreview .categoriesPreview-list"
     );
 
@@ -61,7 +62,7 @@ async function getCategoriesPreview() {
 
     categoryTitle.appendChild(categoryTitleText);
     categoryContainer.appendChild(categoryTitle);
-    previewCategoriesContainer.appendChild(categoryContainer);
+    categoriesPreviewList.appendChild(categoryContainer);
   });
 }
 
