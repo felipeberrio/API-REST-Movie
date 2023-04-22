@@ -19,27 +19,38 @@ const app = () => {
   getCategoriesPreview();
 };
 
+
+// Util - Helpers para reutilizar código
+
+function createMovies(movies, container){
+ container.innerHTML = '';
+
+ movies.forEach((movie) => {
+
+  const movieContainer = document.createElement("div");
+  movieContainer.classList.add("movie-container");
+  const movieImg = document.createElement("img");
+  movieImg.classList.add("movie-img");
+  movieImg.setAttribute("alt", movie.title);
+  movieImg.setAttribute(
+    "src",
+    "https://image.tmdb.org/t/p/w300/" + movie.poster_path
+  );
+  movieContainer.appendChild(movieImg);
+  container.appendChild(movieContainer);
+});
+}
+
+// llamados a la API
+
+
 async function getTrendingMoviesPreview() {
   const {data} = await api("trending/movie/day");
   const movies = data.results;
   console.log({ data, movies });
+  
+  createMovies(movies, trendingMoviesPreviewList);
 
-  trendingMoviesPreviewList.innerHTML = "";
-
-  movies.forEach((movie) => {
-
-    const movieContainer = document.createElement("div");
-    movieContainer.classList.add("movie-container");
-    const movieImg = document.createElement("img");
-    movieImg.classList.add("movie-img");
-    movieImg.setAttribute("alt", movie.title);
-    movieImg.setAttribute(
-      "src",
-      "https://image.tmdb.org/t/p/w300/" + movie.poster_path
-    );
-    movieContainer.appendChild(movieImg);
-    trendingMoviesPreviewList.appendChild(movieContainer);
-  });
 }
 
 async function getCategoriesPreview() {
